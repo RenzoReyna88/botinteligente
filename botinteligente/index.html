@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Broma segura</title>
+<meta name="description" content="Una broma divertida con efecto hackeo para mis hermanos." />
 <style>
   /* Reset básico */
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -108,7 +109,7 @@
 
   <div id="message" class="output" aria-atomic="true"></div>
 
-  <div class="foot">Gracias por darme acceso a toda la información de tu teléfono, cuentas de banco, aplicaciones de pago, usuario y contraseña. ¡Chau! 👇</div>
+  <div class="foot">Si te asustaste: respira, es solo una broma segura 👇</div>
 </div>
 
 <script>
@@ -130,7 +131,6 @@ window.addEventListener('resize', () => {
 });
 
 function drawMatrix() {
-  // Slight translucent black to create fading trails
   ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
   ctx.fillRect(0, 0, w, h);
 
@@ -154,10 +154,9 @@ drawMatrix();
 const countEl = document.getElementById('count');
 const messageEl = document.getElementById('message');
 
-const finalMessage = "¡Broma! No tengo acceso a nada privado. Solo quería asustarte un poco. 😄 ";
+const finalMessage = "¡Broma! No tengo acceso a nada privado. Solo quería asustarte un poco 😜\n\n— Con cariño, tu herman@ —";
 
 function showCountdown(from = 3, delayBefore = 2200) {
-  // Espera un poco antes de iniciar (para efecto dramático)
   setTimeout(() => {
     let n = from;
     countEl.textContent = n;
@@ -166,7 +165,6 @@ function showCountdown(from = 3, delayBefore = 2200) {
       n--;
       if (n <= 0) {
         clearInterval(interval);
-        // pequeña animación de desvanecimiento del contador
         countEl.style.transition = 'opacity 300ms, transform 300ms';
         countEl.style.opacity = '0';
         countEl.style.transform = 'translateY(-20px) scale(0.9)';
@@ -175,16 +173,14 @@ function showCountdown(from = 3, delayBefore = 2200) {
           startTyping(finalMessage);
         }, 400);
       } else {
-        // efecto pequeño de "pop"
         countEl.style.transform = 'scale(1.06)';
-        setTimeout(()=> countEl.style.transform = 'scale(1)', 90);
+        setTimeout(() => countEl.style.transform = 'scale(1)', 90);
         countEl.textContent = n;
       }
     }, 900);
   }, delayBefore);
 }
 
-/* Typing simulation */
 function startTyping(text, speed = 40) {
   let i = 0;
   const cursor = document.createElement('span');
@@ -193,11 +189,8 @@ function startTyping(text, speed = 40) {
 
   function step() {
     if (i < text.length) {
-      // insertar antes del cursor
       const ch = text[i];
-      // Manejar saltos de línea
       if (ch === '\n') {
-        // insertar un <br>
         const br = document.createElement('br');
         messageEl.insertBefore(br, cursor);
       } else {
@@ -206,16 +199,13 @@ function startTyping(text, speed = 40) {
         messageEl.insertBefore(span, cursor);
       }
       i++;
-      // velocidad varía ligeramente para sonar natural
       const jitter = Math.random() * 60 - 20;
       setTimeout(step, Math.max(20, speed + jitter));
     } else {
-      // terminado: parpadeo final más lento
       cursor.style.animation = 'blink 1s steps(1) infinite';
       cursor.style.background = 'transparent';
       cursor.style.width = '8px';
       cursor.style.borderLeft = '2px solid #caffc9';
-      // opcional: resaltado final
       flashWrap();
     }
   }
@@ -231,8 +221,8 @@ function flashWrap() {
   ], { duration: 900, iterations: 2 });
 }
 
-/* Start everything */
 showCountdown(3, 1500);
 </script>
 </body>
 </html>
+
