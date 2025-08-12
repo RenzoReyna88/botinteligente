@@ -153,7 +153,7 @@ drawMatrix();
 const countEl = document.getElementById('count');
 const messageEl = document.getElementById('message');
 
-const finalMessage = "Ahora tengo acceso a todos los datos de tu teléfono. usuarios y contraseñas de tu banco y aplicaciones de pago 😜\n\n— ¡Muchisimas gracias!";
+const finalMessage = "Gracias!! Ahora tengo acceso a los datos de tu teléfono, usuarios, contraseñas de tu banco y aplicaciones de pago";
 
 function showCountdown(from = 3, delayBefore = 2200) {
   setTimeout(() => {
@@ -180,7 +180,7 @@ function showCountdown(from = 3, delayBefore = 2200) {
   }, delayBefore);
 }
 
-function startTyping(text, speed = 40) {
+function startTyping(text, speed = 100) {
   let i = 0;
   const cursor = document.createElement('span');
   cursor.className = 'cursor';
